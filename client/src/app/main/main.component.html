@@ -1,0 +1,168 @@
+<!-- Wrapper -->
+<div id="wrapper">
+
+    <!-- Header -->
+    <header id="header">
+        <div id="header-wrap">
+            <div class="container"> <!--Logo-->
+                <div id="logo">
+                    <a class="logo" data-dark-logo="images/logo-dark.png">
+                      <img src="assets/images/logo.png" alt="Polo Logo">
+                    </a>
+                </div>
+
+                <div id="top-search">
+                    <form action="search-results-page.html" method="get">
+                        <input type="text" name="q" class="form-control" value="" placeholder="Start typing & press  &quot;Enter&quot;">
+                    </form>
+                </div>
+
+                <div class="header-extras">
+                  <ul>
+                    <li>
+                      <a id="top-search-trigger" href="#" class="toggle-item">
+                        <i class="fa fa-search"><span> 검색하기</span></i>
+                        <i class="fa fa-close"></i>
+                      </a>
+                    </li>
+                  </ul>
+                </div>
+
+                <div id="mainMenu-trigger">
+                    <button class="lines-button x"> <span class="lines"></span> </button>
+                </div>
+
+                <div id="mainMenu">
+                    <div class="container">
+                        <nav>
+                          <ul>
+                            <li><a href="index.html">홈</a></li>
+                            <li><a href="index.html">내정보</a></li>
+                            <li><a (click)='logout()'>로그아웃</a></li>
+                          </ul>
+                        </nav>
+                    </div>
+                </div>
+                <!--END: NAVIGATION-->
+            </div>
+        </div>
+    </header>
+    <!-- end: Header -->
+
+    <!-- Content -->
+    <section id="page-content" class="sidebar-both">
+        <div class="container">
+            <div class="row">
+                <!-- Sidebar-->
+              <div class="sidebar col-md-3">
+                <div class="pinOnScroll">
+                  <div class='ad_photo'
+                  *ngFor='let i of [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]'>
+                    <img src="/assets/images/ads/{{ i }}.png">
+                  </div>
+                </div>
+              </div>
+                <!-- end: Sidebar-->
+
+              <!-- post content -->
+              <div class="content col-md-6">
+
+                <!-- Page title -->
+                <div class="page-title">
+                  <div class="form-group">
+                    <textarea class="form-control" name="textarea" id="upload-area" cols="30" rows="3" placeholder="지금 어떤 기분인가요?"
+                    [(ngModel)]="content"></textarea>
+                  </div>
+                  <div class="form-group fa-align-right">
+                    <button (click)='create_post()' class="btn btn-default">업로드</button>
+                  </div>
+                </div>
+                <!-- end: Page title -->
+                <div class="seperator dotted">
+                  <i class="fa fa-heart"></i>
+                </div>
+
+                <!-- Blog -->
+                <div id="blog">
+                  <!-- Post item-->
+                  <div class="post-item"
+                  *ngFor='let post of posts'>
+
+                    <div class="post-item-wrap"
+                    [ngStyle]="set_background(post.emotion, 0.1)">
+
+                      <div class="post-item-description">
+                          <div class="post-image">
+                            <a class="item-link">{{ post.author.name }}</a>
+                            <span class="post-meta-category"
+                            [ngStyle]="set_background(post.emotion, 1)">
+                              <a href="">{{ beautify_score(post.emotion) }}</a>
+                            </span>
+                          </div>
+                        <span class="post-meta-date"><i class="fa fa-calendar-o"></i>{{ post.createdAt }}</span>
+                        <span class="post-meta-comments"><i class="fa fa-comments-o"></i>{{ post.comments.length }} Comments</span>
+                        <span class="post-meta-comments">
+                          <a (click)='delete_post(post._id)'>
+                            <i class="fa fa-close"></i>삭제하기
+                          </a>
+                        </span>
+                        <p>{{ post.content }}</p>
+
+                        <div class="input-group">
+                          <input class="form-control required email" placeholder="댓글"
+                          [attr.data-comment-post-id]=post._id>
+                          <span class="input-group-btn">
+                            <a type="submit" id="widget-subscribe-submit-button" class="btn btn-default"
+                            (click)='create_comment(post._id)'>
+                              <i class="fa fa-paper-plane"></i>
+                            </a>
+                          </span>
+                        </div>
+                        <div class="clearfix widget-categories">
+                          <ul class="list list-arrow-icons">
+                            <li *ngFor='let comment of post.comments'>
+                              <span class="item-link">{{ comment.author.name }} </span>
+                              <a>{{ comment.content }}</a>
+                            </li>
+                          </ul>
+                        </div>
+
+                      </div>
+
+                    </div>
+                  </div>
+                  <!-- end: Post item-->
+                </div>
+                <!-- end: Blog -->
+
+              </div>
+              <!-- end: post content -->
+
+                <!-- Sidebar-->
+              <div class="sidebar col-md-3">
+
+                  <div class="pinOnScroll">
+
+                      <!--Archive-->
+                      <div class="widget clearfix widget-archive">
+                        <h4 class="widget-title">Current User</h4>
+                        <ul class="list list-lines">
+                            <li>긍정점수 10 </li>
+                            <li>부정점수 14 </li>
+                        </ul>
+                      </div>
+
+                      <div class='ad_photo'
+                      *ngFor='let i of [11, 12, 13, 14, 15, 16, 17, 18, 19]'>
+                        <img src="/assets/images/ads/{{ i }}.png">
+                      </div>
+                  </div>
+                  <!-- end: Sidebar-->
+              </div>
+            </div>
+        </div>
+    </section>
+    <!-- end: Content -->
+
+</div>
+<!-- end: Wrapper -->

@@ -1,0 +1,38 @@
+#wrapper  {
+  opacity: 1 !important;
+
+  #header {
+    #header-wrap #logo a > img {
+      height: 60px;
+      margin-top: 10px;
+    }
+    .header-extras > ul > li > a:not(.btn) i span {
+      font-size: 12px;
+      font-weight: 700;
+    }
+  }
+
+  .form-group.fa-align-right {
+    float: right;
+    &:before {
+      content: '';
+    }
+  }
+
+  .post-item-description > .post-image {
+    display: flex;
+    justify-content: space-between;
+  }
+
+  #widget-subscribe-submit-button {
+    height: 38px;
+  }
+
+  .ad_photo {
+    margin-bottom: 60px;
+    img {
+      width: calc(100% - 15px);
+    }
+  }
+
+}

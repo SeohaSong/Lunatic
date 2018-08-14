@@ -1,0 +1,18 @@
+#wrapper {
+  opacity: 1 !important;
+  height: 100%;
+  .logo {
+    > img {
+      height: 80px;
+    }
+  }
+  .fullscreen {
+    height: inherit;
+    background-image: url('/assets/images/login-bg.jpg');
+    background-size: cover;
+  }
+  .col-md-12.form-group {
+    display: flex;
+    justify-content: space-between;
+  }
+}
